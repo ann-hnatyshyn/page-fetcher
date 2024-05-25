@@ -1,27 +1,27 @@
-const needle = require('needle');
-needle.get('http://www.example.edu/', (error, response, body) => {
-  console.log('error:', error); // Print the error if one occurred
-  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  console.log('body:', body); // Print the HTML for the Google homepage.
+const needle = require("needle");
+needle.get("http://www.example.edu/", (error, response, body) => {
+  console.log("error:", error); // Print the error if one occurred
+  console.log("statusCode:", response && response.statusCode); // Print the response status code if a response was received
+  console.log("body:", body); // Print the HTML
 });
 
+const fs = require("fs").promises;
 
-const fs = require('fs');
-const filePath = '/Users/annhnatyshyn/lighthouse/page-fetcher';
-fs.open(filePath, 'r', (err, data) => {
-  if (err) {
-    console.error('Error opening file:', err);
-    return;
+const fetcher = async() => {
+  try {
+    const filePath = "/Users/annhnatyshyn/lighthouse/page-fetcher";
+    const fileDescriptor = await fs.open(filePath, "r");
+
+    const content = "Some content!";
+    fileDescriptor;
+    await fs.writeFile("/Users/annhnatyshyn/lighthouse/page-fetcher", content);
+
+    console.log("File written successfully");
+  } catch (err) {
+    console.log(err);
   }
-  // Proceed with your file operations using the file descriptor `fd`
-  console.log('File opened successfully', data.toString());
-});
-
-
-
-
-
-
+};
+fetcher();
 
 // const fletcher = async function() {
 //   try {
