@@ -6,13 +6,29 @@ needle.get('http://www.example.edu/', (error, response, body) => {
 });
 
 
-const fs = require('node:fs/promises');
-const fletcher = async function() {
-  try {
-    const content = 'Some content!';
-    await fs.appendFile('/Users/joe/test.txt', content);
-  } catch (err) {
-    console.log(err);
+const fs = require('fs');
+const filePath = '/Users/annhnatyshyn/lighthouse/page-fetcher';
+fs.open(filePath, 'r', (err, data) => {
+  if (err) {
+    console.error('Error opening file:', err);
+    return;
   }
-};
-fletcher();
+  // Proceed with your file operations using the file descriptor `fd`
+  console.log('File opened successfully', data.toString());
+});
+
+
+
+
+
+
+
+// const fletcher = async function() {
+//   try {
+//     const content = 'Some content!';
+//     await fs.appendFile(filePath, content);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+// fletcher();
